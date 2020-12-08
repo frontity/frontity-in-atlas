@@ -12,6 +12,10 @@ const settings = {
       name: "@frontity/twentytwenty-theme",
       state: {
         theme: {
+          colors: {
+            primary: "#007cba",
+            bodyBg: "#d9eafa",
+          },
           menu: [
             ["Home", "/"],
             ["Nihil", "/category/nihil/"],
@@ -19,10 +23,6 @@ const settings = {
             ["Neque", "/tag/neque/"],
             ["Ipsam expedita", "/ipsam-expedita-ut-et/"],
           ],
-          featured: {
-            showOnList: false,
-            showOnPost: false,
-          },
           autoPrefetch: "hover",
         },
       },
