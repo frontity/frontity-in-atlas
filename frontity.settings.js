@@ -14,10 +14,10 @@ const settings = {
         theme: {
           menu: [
             ["Home", "/"],
-            ["Nature", "/category/nature/"],
-            ["Travel", "/category/travel/"],
-            ["Japan", "/tag/japan/"],
-            ["About Us", "/about-us/"],
+            ["Nihil", "/category/nihil/"],
+            ["Delectus eius", "/category/delectus-eius/"],
+            ["Neque", "/tag/neque/"],
+            ["Ipsam expedita", "/ipsam-expedita-ut-et/"],
           ],
           featured: {
             showOnList: false,
