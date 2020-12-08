@@ -13,7 +13,8 @@
   "scripts": {
     "dev": "frontity dev",
     "build": "frontity build",
-    "serve": "frontity serve"
+    "start": "frontity serve --port 8080",
+    "wpe-build": "frontity build"
   },
   "prettier": {},
   "dependencies": {
