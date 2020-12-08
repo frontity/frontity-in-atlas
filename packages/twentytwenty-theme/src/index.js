@@ -1,5 +1,7 @@
 import Theme from "./components";
 import image from "@frontity/html2react/processors/image";
+import { observe } from "frontity";
+import { unobserve } from "@frontity/connect";
 
 const twentyTwentyTheme = {
   name: "@frontity/twentytwenty-theme",
@@ -59,6 +61,14 @@ const twentyTwentyTheme = {
    */
   actions: {
     theme: {
+      afterCSR: ({ state }) => {
+        const changeAutoPrefetch = observe(() => {
+          if (state.router.link !== state.frontity.initialLink) {
+            state.theme.autoPrefetch = "in-view";
+            unobserve(changeAutoPrefetch);
+          }
+        });
+      },
       openMobileMenu: ({ state }) => {
         state.theme.isMobileMenuOpen = true;
       },
