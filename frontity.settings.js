@@ -2,9 +2,9 @@ const settings = {
   name: "wpengine",
   state: {
     frontity: {
-      url: "https://test.frontity.org",
-      title: "Test Frontity Blog",
-      description: "WordPress installation for Frontity development",
+      url: "https://frontityengine.wpengine.com/",
+      title: "Frontity in WP Engine",
+      description: "Frontity running in WP Engine, both WP and Node",
     },
   },
   packages: [
@@ -27,14 +27,7 @@ const settings = {
         },
       },
     },
-    {
-      name: "@frontity/wp-source",
-      state: {
-        source: {
-          url: "https://frontityengine.wpengine.com/",
-        },
-      },
-    },
+    "@frontity/wp-source",
     "@frontity/tiny-router",
     "@frontity/html2react",
   ],
