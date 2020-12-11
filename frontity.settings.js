@@ -2,7 +2,7 @@ const settings = {
   name: "wpengine",
   state: {
     frontity: {
-      url: "https://frontityengine.wpengine.com/",
+      url: "https://wpengine.frontity.org/",
       title: "Frontity in WP Engine",
       description: "Frontity running in WP Engine, both WP and Node",
     },
