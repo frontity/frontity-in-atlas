@@ -13,7 +13,7 @@
   "scripts": {
     "dev": "frontity dev",
     "build": "frontity build",
-    "start": "node server.js",
+    "start": "frontity serve",
     "wpe-build": "frontity build --public-path https://htibhxcpw5m0mvmfc6eqd.js.wpenginepowered.com/static/"
   },
   "prettier": {},
