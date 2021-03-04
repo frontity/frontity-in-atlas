@@ -1,69 +1,106 @@
-# wpengine
+# Frontity in Atlas (WP Engine)
 
-This project was bootstrapped with [Frontity](https://frontity.org/).
+This is the Frontity project that is powering the site https://wpengine.frontity.org.
 
-#### Table of Contents
+**Both WordPress and Frontity are running in WP Engine**:
 
-- [Launch a development server](#launch-a-development-server)
-- [Create your custom theme](#create-your-custom-theme)
-- [Create a production-ready build](#create-a-production-ready-build)
-- [Deploy](#deploy)
+- WordPress is running in the [WP Engine](https://wpengine.com/) managed hosting service.
+- Frontity is running in [Atlas](https://wpengine.com/atlas), the new Headless WordPress platform of WP Engine.
 
-### Launch a development server
+# Installation
 
-```
-npx frontity dev
-```
+If you want to run Frontity in Atlas, follow this steps:
 
-Runs the app in development mode. Open http://localhost:3000 to view it in the browser.
+## 1. Install the CLI
 
-The site will automatically reload if you make changes inside the `packages` folder. You will see the build errors in the console.
-
-> Have a look at our [Quick Start Guide](https://docs.frontity.org/getting-started/quick-start-guide)
-
-### Create your custom theme
+First, install the Atlas CLI.
 
 ```
-npx frontity create-package your-custom-theme
+npm i @wpengine/headless-cli -g
 ```
 
-Use the command `npx frontity create-package` to create a new package that can be set in your `frontity.settings.js` as your theme
+_Docs: https://developers.wpengine.com/docs/headless/guides_
 
-> Have a look at our blog post [How to Create a React WordPress Theme in 30 Minutes](https://frontity.org/blog/how-to-create-a-react-theme-in-30-minutes/)
+## 2. Login and connect with GitHub
 
-### Create a production-ready build
+The next step is to login to your WP Engine account:
 
 ```
-npx frontity build
+wpe alpha auth login
 ```
 
-Builds the app for production to the `build` folder.
+And then connect with GitHub
 
-This will create a `/build` folder with a `server.js` (a [serverless function](https://vercel.com/docs/v2/serverless-functions/introduction)) file and a `/static` folder with all your javascript files and other assets.
+```
+wpe alpha auth login github
+```
 
-Your app is ready to be deployed.
+In order to work with headless apps, we need to set our account context. Your account name can be found in the WP Engine User Portal in the top left of the navigation bar. To set the account context, run:
 
-> Get more info about [Frontity's architecture](https://docs.frontity.org/architecture)
+```
+wpe alpha context set account YOUR_ACCOUNT_NAME
+```
 
-### Deploy
+_Docs: https://developers.wpengine.com/docs/headless/guides/getting-started/deploy-app/cli#authenticate-with-the-platform-via-the-cli_
 
-With the files generated in the _build_ you can deploy your project
+## 3. Create a `wpe.json` File
 
-#### As a node app
+Create a `wpe.json` file in the root of your project.
 
-Use `npx frontity serve` to run it like a normal Node app.
+For example, this is the one we used for this project:
 
-This command generates (and runs) a small web server that uses the generated `server.js` and `/static` to serve your content
+```json
+{
+  "name": "frontity-in-atlas",
+  "repo": "frontity/frontity-in-atlas",
+  "region": "US-C",
+  "environments": [
+    {
+      "name": "Production",
+      "branch": "master",
+      "wp_environment_name": "frontity-in-atlas"
+    }
+  ]
+}
+```
 
-#### As a serverless service
+_Docs: https://developers.wpengine.com/docs/headless/guides/getting-started/deploy-app/cli#create-a-wpejson-file_
 
-Upload your `static` folder to a CDN and your `server.js` file to a serverless service, like Now or Netlify.
+## 4. Add npm scripts
 
-> Get more info about [how to deploy](https://docs.frontity.org/deployment) a Frontity project
+Atlas needs two npm scripts:
 
----
+- `wpe-build`: To build the app.
+- `start`: To run the app.
 
-### » Frontity Channels 🌎
+Add them to your `package.json`:
+
+```json
+"scripts": {
+    "dev": "frontity dev",
+    "build": "frontity build",
+    "start": "frontity serve --port 8080",
+    "wpe-build": "frontity build"
+  },
+```
+
+> ℹ️ If you want to run Frontity in Embedded mode, add a `--public-path` option to the build script with the URL of your Atlas deployment.
+
+## 5. Deploy!
+
+Finally, create the application using:
+
+```
+wpe alpha apps create -f wpe.json
+```
+
+That's it. The app will be deployed.
+
+From now on, a new build will be generated each time you push code to your repository.
+
+_Docs: https://developers.wpengine.com/docs/headless/guides/getting-started/deploy-app/cli#deploy-your-app_
+
+# » Frontity Channels 🌎
 
 We have different channels at your disposal where you can find information about the project, discuss about it and get involved:
 
