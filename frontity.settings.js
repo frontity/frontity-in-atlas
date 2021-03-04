@@ -1,5 +1,5 @@
 const settings = {
-  name: "wpengine",
+  name: "frontity-in-atlas",
   state: {
     frontity: {
       url: "https://wpengine.frontity.org/",
