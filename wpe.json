@@ -1,0 +1,12 @@
+{
+  "name": "frontity-in-atlas",
+  "repo": "frontity/frontity-in-atlas",
+  "region": "US-C",
+  "environments": [
+    {
+      "name": "Production",
+      "branch": "master",
+      "wp_environment_name": "frontityengine"
+    }
+  ]
+}
