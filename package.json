@@ -16,7 +16,7 @@
     "dev": "frontity dev",
     "build": "frontity build",
     "start": "frontity serve --port 8080",
-    "wpe-build": "frontity build --public-path https://htibhxcpw5m0mvmfc6eqd.js.wpenginepowered.com/static/"
+    "wpe-build": "frontity build --public-path https://hetw6k32m6xsiypwzbrhutcwh.js.wpenginepowered.com/static/"
   },
   "prettier": {},
   "dependencies": {
